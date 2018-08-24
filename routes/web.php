@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,133 @@ Route::get('/', function () {
 });
 
 
+/*
+|--------------------------------------------------------------------------
+| Eloquent ORM
+|--------------------------------------------------------------------------
+*/
+
+// READ
+// Route::get('/read', function() {
+//     $posts = Post::all();
+//     foreach($posts as $post) {
+//         return $post->title;
+//     }
+// });
+
+// FIND
+// Route::get('/find', function() {
+//     $post = Post::find(2);
+//     return $post->title;
+// });
+
+// FIND WHERE
+// Route::get('/find-where', function() {
+//     $posts = Post::where('isAdmin', 0) // 0 means false
+//         ->orderBy('id', 'asc')
+//         ->take(3)
+//         ->get();
+//     return $posts;
+// });
+
+// FIND MORE
+// Route::get('/find-more', function () {
+//     // method 1
+//     // $posts = Post::findOrFail(3);
+//     // return $posts;
+
+//     // method 2
+//     $posts = Post::where('isAdmin', '<', 50)
+//         ->firstOrFail();
+//     return $posts;
+// });
+
+// INSERT
+// Route::get('/insert', function() {
+//     $post = new Post;
+//     $post->id = 3;
+//     $post->title = 'blah ORM Title';
+//     $post->body = 'Wow awesome stuff going on here';
+//     $post->image = 'image2.png';
+//     $post->isAdmin = true;
+
+//     $post->save();
+
+//     return $post;
+// });
+
+// UPDATE
+// Route::get('/update', function () {
+//     // method one
+// //     $post = Post::find(3);
+// //     $post->title = 'SHIT it works';
+// //     $post->body = 'ok this really does work and is way cooler than i thought';
+// //     $post->save();
+// //     return $post;
+
+//     // method two
+//     Post::where('id', 2)
+//         ->where('isAdmin', 0)
+//         ->update([
+//             'title' => 'BLAH NEW PHP LARAVEL TITLE',
+//             'body' => 'i love this course',
+//         ]);
+// });
+
+// CREATE
+// Route::get('/create', function() {
+//     Post::create([
+//         'title'=>'the NEW create method',
+//         'body'=>'wow learning so much from this course',
+//         'image'=>'image_new-blah.jpg',
+//     ]);
+// });
+
+// DELETE
+// Route::get('/delete', function () {
+//     // method one
+//     // $post = Post::find(7);
+//     // $post->delete();
+
+//     // method two single
+//     Post::destroy(8);
+
+//     // method two multiple
+//     // Post::destroy([
+//     //     2,
+//     //     3,
+//     // ]);
+// });
+
+// SOFT DELETE / MOVE TO TRASH
+// Route::get('/trash', function() {
+//     Post::find(10)
+//         ->delete();
+// });
+
+// RETRIEVE TRASH ITEMS
+// Route::get('/get-trash', function() {
+
+//     // return all items - even if trashed
+//     // $post = Post::withTrashed()->where('isAdmin', 0)->get();
+//     // return $post;
+
+//     //return only trashed items
+//     $post = Post::onlyTrashed()->where('isAdmin', 0)->get();
+//     return $post;
+// });
+
+// RESTORE TRASH ITEMS
+// Route::get('/restore', function () {
+//     Post::withTrashed()->where('isAdmin', 0)->restore();
+// });
+
+// Force DELETE TRASH
+// Route::get('/force-delete', function() {
+//     Post::onlyTrashed()->where('isAdmin', 0)->forceDelete();
+// });
+
+
 
 
 /*
@@ -27,7 +156,7 @@ Route::get('/', function () {
 // INSERT
 // Route::get('/insert', function() {
 
-//     DB::insert('insert into posts(title, body, image) values(?, ?, ?)', ['PHP with Laravel', 'Laravel is the best thing ever', 'image.jpg']);
+//     DB::insert('insert into posts(title, body, image) values(?, ?, ?)', ['FOOEEEE', 'Laravel is the best coool', 'image2.jpg']);
 // });
 
 

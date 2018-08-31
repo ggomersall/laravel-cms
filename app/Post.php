@@ -18,4 +18,9 @@ class Post extends Model
         'body',
         'image',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

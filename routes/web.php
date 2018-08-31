@@ -1,10 +1,12 @@
 <?php
 
 use App\Post;
+use App\User;
+use App\Country;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routess
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -17,6 +19,61 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Eloquent Relationships
+|--------------------------------------------------------------------------
+*/
+
+// has one 
+// Route::get('user/{id}/post', function ($id) {
+//     return User::find($id)->post->title;
+// });
+
+// belongs to
+// Route::get('/post/{id}/user', function ($id) {
+//     return Post::find($id)->user;
+// });
+
+// one to many
+// Route::get('posts', function () {
+//    $user = User::find(1);
+
+//    foreach ($user->posts as $post) {
+//         echo $post;
+//     }
+// });
+
+// belong to many
+// Route::get('user/{id}/roles', function ($id) {
+//     // // way one
+//     // $user = User::find($id);
+//     // foreach ($user->roles as $role) {
+//     //     echo $role->role; 
+//     // }
+
+//     // way two
+//     // $user = User::find($id)->roles()->orderBy('id', 'asc')->get();
+//     // return $user;
+// });
+
+
+// accessing pivot / look up table table
+// Route::get('user/pivot', function () {
+//     $user = User::find(1);
+
+//     foreach($user->roles as $role) {
+//         echo $role->pivot;
+//     }
+// });
+
+// has many through
+Route::get('user/country/{id}', function ($id) {
+    $country = Country::find($id);
+    foreach($country->posts as $post) {
+        echo $post->title;
+    }
+});
 
 /*
 |--------------------------------------------------------------------------

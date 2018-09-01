@@ -8,6 +8,6 @@ class Country extends Model
 {
     public function posts() 
     {
-        return $this->hasManyThrough('App\Post', 'App\User', 'country_id');
+        return $this->hasManyThrough('App\Post', 'App\User'); // basically Country has many Posts through Users
     }
 }

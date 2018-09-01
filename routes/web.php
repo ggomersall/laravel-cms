@@ -3,6 +3,9 @@
 use App\Post;
 use App\User;
 use App\Country;
+use App\Photo;
+use App\Tag;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,7 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
-// has one 
+// has one
 // Route::get('user/{id}/post', function ($id) {
 //     return User::find($id)->post->title;
 // });
@@ -49,7 +52,7 @@ Route::get('/', function () {
 //     // // way one
 //     // $user = User::find($id);
 //     // foreach ($user->roles as $role) {
-//     //     echo $role->role; 
+//     //     echo $role->role;
 //     // }
 
 //     // way two
@@ -68,12 +71,59 @@ Route::get('/', function () {
 // });
 
 // has many through
-Route::get('user/country/{id}', function ($id) {
-    $country = Country::find($id);
-    foreach($country->posts as $post) {
-        echo $post->title;
-    }
-});
+// Route::get('user/country/{id}', function ($id) {
+//     $country = Country::find($id);
+//     foreach($country->posts as $post) {
+//         echo $post->title;
+//     }
+// });
+
+
+// Polymorphic relationships - belong to more than one other model in single association
+// i.e. users table and post table are both related to photos table
+// Route::get('user/{id}/photos', function ($id) {
+//     $user = User::find($id);
+
+//     foreach($user->photos as $photo) {
+//         return $photo->image_path;
+//     }
+// });
+
+// Route::get('post/{id}/photo', function ($id) {
+//     $post = Post::find($id);
+
+//     foreach($post->photos as $photo) {
+//         echo $photo->image_path . '<br>';
+//     }
+// });
+
+// Route::get('photo/{id}', function($id){
+//     $photo = Photo::findOrFail($id);
+//     return $photo->imageable;
+
+// });
+
+
+// polymorphic many to many
+// get tags associated to post
+// Route::get('post/{id}/tags', function($id) {
+//     $post = Post::findOrFail($id);
+
+//     foreach($post->tags as $tag) {
+//         echo $tag->tag_name . '<br>';
+
+//     }
+// });
+
+// Route::get('tag/{id}/posts', function ($id) {
+//     $tag = Tag::findOrFail($id);
+
+//     foreach($tag->posts as $post) {
+//         echo $post->title . '<br>';
+//     }
+// });
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -225,7 +275,6 @@ Route::get('user/country/{id}', function ($id) {
 //     foreach($results as $post) {
 //         return $post->title;
 //     }
-
 //     // return array method
 //     // return $results;
 
